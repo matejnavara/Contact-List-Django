@@ -1,30 +1,49 @@
 <html>
         <head>
                 <title>Contact List</title>
+                <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+                <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+                <style type="text/css"></style>
         </head>
         
-        <body>
-                <div>
-                        <h1>Employee Contact List</h1>
-                </div>
+        <body class=" dashboard">
+                <div id="container">
+                <!-- Header -->
+                        <div id="header">
+                                <div id="branding">
+                                <h1 id="site-name">Employee Contact List</h1>
+                                </div>
+                                <div id="user-tools">
+                                <a href="/admin/">Admin site</a>
+                                </div>
+                                
                 
-                <div>
-                <table border="1">
-                        <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Telephone</th>
-                        </tr>
-                        
-                        {% for employee in employees %}
-                        <tr>
-                                <td>{{employee.first_name}}</td>
-                                <td>{{employee.last_name}}</td>
-                                <td>{{employee.email}}</td>
-                                <td>{{employee.telephone}}</td>
-                        </tr>
-                        {% endfor %}
+                        </div>
+                
+                <!-- Content -->
+                        <div id="content">
+                        <table border="1">
+                                <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Telephone</th>
+                                        <th>Department</th>
+                                        <th>Manager</th>
+                                </tr>
+                                
+                                {% for employee in employees %}
+                                <tr>
+                                        <td>{{employee.first_name}}</td>
+                                        <td>{{employee.last_name}}</td>
+                                        <td>{{employee.email}}</td>
+                                        <td>{{employee.telephone}}</td>
+                                        <td>{{employee.department}}</td>
+                                        <td>{{employee.manager}}</td>
+                                </tr>
+                                {% endfor %}
+                        </table>
+                        </div>
                 </div>
         </body>
 </html>
