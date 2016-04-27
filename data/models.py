@@ -11,6 +11,7 @@ class Employee(models.Model):
     #first_name: Entry field for first name validated for only text input, limited to 30 chars.
     #last_name: Entry field for last name validated for only text input, limited to 30 chars.
     #address: Entry field for address, limited to 100 chars.
+    #city: Entry field for address, limited to 30 chars.
     #post_code: Entry field for post code, limited to 8 chars. //Could use more validation
     #email: Entry for email using EmailValidator.
     #telephone: Entry for telephone number validated for 9-15 digits and beginning with a +
@@ -34,6 +35,7 @@ class Employee(models.Model):
     last_name = models.CharField(validators=[text_regex], max_length=30)
     
     address = models.CharField(max_length=100)
+    city = models.CharField(max_length=30)
     post_code = models.CharField(max_length=8)
     
     email = models.EmailField(primary_key=True)
@@ -43,7 +45,7 @@ class Employee(models.Model):
     
     department = models.ForeignKey("Department")
     
-    manager = models.ForeignKey('self', blank=True, null = True, limit_choices_to={'is_manager':True})
+    manager = models.ForeignKey('self', blank=True, null = True, limit_choices_to={'is_manager':True, 'is_active':True})
     is_manager = models.BooleanField(default=False)
     
     is_active = models.BooleanField(default=True)

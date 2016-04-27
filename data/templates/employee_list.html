@@ -22,27 +22,44 @@
                 
                 <!-- Content -->
                         <div id="content">
+                        <form method="get" action="/search/">
+                                <input type="text" name="q"/>
+                                <input type="submit" value="Search"/>
+                        </form>
+                        <form method="get" action="/">
+                                <input type="submit" value="Show All Active">
+                        </form>
+
                         <table border="1">
                                 <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Telephone</th>
-                                        <th>Department</th>
-                                        <th>Manager</th>
+                                        <th><a href="/sort/?order_by=first_name">First Name</a></th>
+                                        <th><a href="/sort/?order_by=last_name">Last Name</a></th>
+                                        <th><a href="/sort/?order_by=email">Email</a></th>
+                                        <th><a href="/sort/?order_by=address">Address</a></th>
+                                        <th><a href="/sort/?order_by=city">City</a></th>
+                                        <th><a href="/sort/?order_by=post_code">Post Code</a></th>
+                                        <th><a href="/sort/?order_by=telephone">Telephone</a></th>
+                                        <th><a href="/sort/?order_by=department">Department</a></th>
+                                        <th><a href="/sort/?order_by=manager">Manager</a></th>
                                 </tr>
                                 
                                 {% for employee in employees %}
                                 <tr>
                                         <td>{{employee.first_name}}</td>
                                         <td>{{employee.last_name}}</td>
-                                        <td>{{employee.email}}</td>
+                                        <td><a href="mailto:{{employee.email}}">{{employee.email}}</a></td>
+                                        <td>{{employee.address}}</td>
+                                        <td>{{employee.city}}</td>
+                                        <td>{{employee.post_code}}</td>
                                         <td>{{employee.telephone}}</td>
                                         <td>{{employee.department}}</td>
                                         <td>{{employee.manager}}</td>
                                 </tr>
                                 {% endfor %}
+                                
                         </table>
+                       
+                        
                         </div>
                 </div>
         </body>
